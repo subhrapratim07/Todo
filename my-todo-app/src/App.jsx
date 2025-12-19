@@ -16,7 +16,7 @@ function App() {
 
   const fetchTodos = async () => {
     try {
-      const res = await fetch('http://localhost:5000/todos');
+      const res = await fetch('https://todo-xc7k.onrender.com/todos');
       const data = await res.json();
       
       // CRITICAL: Check if data is actually an array
@@ -43,7 +43,7 @@ function App() {
     };
 
     try {
-      const response = await fetch('http://localhost:5000/todos', {
+      const response = await fetch('https://todo-xc7k.onrender.com/todos', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
@@ -63,7 +63,7 @@ function App() {
 
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5000/todos/${id}`, { method: 'DELETE' });
+      const response = await fetch(`https://todo-xc7k.onrender.com/${id}`, { method: 'DELETE' });
       if (response.ok) fetchTodos();
     } catch (err) {
       console.error("Delete failed:", err);
