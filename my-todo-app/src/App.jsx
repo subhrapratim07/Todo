@@ -63,8 +63,16 @@ function App() {
 
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`https://todo-xc7k.onrender.com/${id}`, { method: 'DELETE' });
-      if (response.ok) fetchTodos();
+      // FIX: Added "/todos/" to the URL path to match the backend route
+      const response = await fetch(`https://todo-xc7k.onrender.com/todos/${id}`, { 
+        method: 'DELETE' 
+      });
+      
+      if (response.ok) {
+        fetchTodos();
+      } else {
+        console.error("Failed to delete the task on the server.");
+      }
     } catch (err) {
       console.error("Delete failed:", err);
     }
